@@ -26,6 +26,12 @@ class ControllerExtensionPaymentAssetPayments extends Controller {
 				"ProductPrice" => $shipping_cost,
 				"ProductItemsNum" => 1,
 			);	
+		
+		//****Country ISO fix****//
+		$country = $order_info['shipping_iso_code_3'];
+		if ($country == ''){
+			$country = 'UKR';
+		}
 
 		$data['action'] = 'https://assetpayments.us/checkout/pay';
 
@@ -39,13 +45,13 @@ class ControllerExtensionPaymentAssetPayments extends Controller {
             'Email' => $order_info['email'],
             'Phone' => $order_info['telephone'],           
             'Address' => $order_info['payment_address_1'] . ' ' . $order_info['payment_address_2'] . ' ' . $order_info['payment_city'].' '.$order_info['payment_country'] . ' ' . $order_info['payment_postcode'],           
-            'CountryISO' => $order_info['shipping_iso_code_3'], 
+            'CountryISO' => $country, 
 			'Amount' => $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false),
             'Currency' => $order_info['currency_code'],
             'AssetPaymentsKey' => $this->config->get('payment_assetpayments_merchant'),
 			'Products' => $request['Products']
           );
-		//var_dump ($send_data);
+		var_dump ($send_data);
 		$data['xml'] = base64_encode(json_encode($send_data));
 		return $this->load->view('extension/payment/assetpayments', $data);	  
 		  
@@ -67,6 +73,10 @@ class ControllerExtensionPaymentAssetPayments extends Controller {
 		if ($status == 1 && $sign == $signature) {
 			$this->load->model('checkout/order');
 			$this->model_checkout_order->addOrderHistory($order_id, $this->config->get('payment_assetpayments_order_status_id'),'AssetPayments TransactionID: ' .$transactionId);
+		} 
+		if ($status == 2 && $sign == $signature) {
+			$this->load->model('checkout/order');
+			$this->model_checkout_order->addOrderHistory($order_id, 1,'Payment FAILED TransactionID: ' .$transactionId);		
 		}
 	}
 }
