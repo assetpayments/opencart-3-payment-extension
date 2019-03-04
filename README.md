@@ -26,7 +26,7 @@ Alternatively you can just upload the upload directory content to your opencart 
 ### Установка
 * Создайте резервную копию вашего магазина и базы данных
 * Загрузите файл модуля opencart-3-assetpayments-payment-module.ocmod.zip с помощью Модули -> Установка расширений
-* Активируйте модуль BeGateway в модулях оплаты (Модули -> Оплата)
+* Активируйте модуль AssetPayments в модулях оплаты (Модули -> Оплата)
 * Задайте в настройках модуля:
   * Id магазина
   * Ключ магазина
