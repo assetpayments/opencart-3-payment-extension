@@ -37,18 +37,19 @@ class ControllerExtensionPaymentAssetPayments extends Controller {
 
 		$send_data = Array(
 			'TemplateId' => $this->config->get('payment_assetpayments_type'),
-            'MerchantInternalOrderId' => $this->session->data['order_id'],
-            'StatusURL' => $this->url->link('extension/payment/assetpayments/callback', '', true),
-            'ReturnURL' => $this->url->link('checkout/success', '', true),
-			'FirstName' => $order_info['payment_firstname']. ' ' . $order_info['payment_lastname'],
-            'LastName' => $order_info['payment_lastname'],
-            'Email' => $order_info['email'],
-            'Phone' => $order_info['telephone'],           
-            'Address' => $order_info['payment_address_1'] . ' ' . $order_info['payment_address_2'] . ' ' . $order_info['payment_city'].' '.$order_info['payment_country'] . ' ' . $order_info['payment_postcode'],           
-            'CountryISO' => $country, 
+            		'MerchantInternalOrderId' => $this->session->data['order_id'],
+            		'StatusURL' => $this->url->link('extension/payment/assetpayments/callback', '', true),
+            		'ReturnURL' => $this->url->link('checkout/success', '', true),
+	    		'FirstName' => $order_info['payment_firstname']. ' ' . $order_info['payment_lastname'],
+            		'LastName' => $order_info['payment_lastname'],
+            		'Email' => $order_info['email'],
+            		'Phone' => $order_info['telephone'],           
+            		'Address' => $order_info['payment_address_1'] . ' ' . $order_info['payment_address_2'] . ' ' . $order_info['payment_city'].' '.$order_info['payment_country'] . ' ' . $order_info['payment_postcode'],           
+            		'CountryISO' => $country, 
 			'Amount' => $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false),
-            'Currency' => $order_info['currency_code'],
-            'AssetPaymentsKey' => $this->config->get('payment_assetpayments_merchant'),
+            		'Currency' => $order_info['currency_code'],
+            		'CustomMerchantInfo' => 'OpenCart: 3',
+			'AssetPaymentsKey' => $this->config->get('payment_assetpayments_merchant'),
 			'Products' => $request['Products']
           );
 		var_dump ($send_data);
