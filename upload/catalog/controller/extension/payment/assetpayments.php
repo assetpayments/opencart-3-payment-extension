@@ -24,6 +24,7 @@ class ControllerExtensionPaymentAssetPayments extends Controller {
 				"ProductId" => '12345',
 				"ProductName" => $order_info['shipping_method'],
 				"ProductPrice" => $shipping_cost,
+				"ImageUrl" => 'https://assetpayments.com/dist/css/images/delivery.png',
 				"ProductItemsNum" => 1,
 			);	
 		
