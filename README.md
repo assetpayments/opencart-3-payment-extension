@@ -17,8 +17,6 @@
 Tested and developed with OpenCart v.3.0.2.0
 
 ### Troubleshooting
-If you hosting service doesn't provide a FTP access, most probably you will have to install the extension before to install the payment module.
-
 Alternatively you can just upload the upload directory content to your opencart installation directory.
 
 ## Модуль оплаты OpenCart 3
@@ -39,6 +37,4 @@ Alternatively you can just upload the upload directory content to your opencart 
 Разработано и протестировано с OpenCart v.3.0.2.0
 
 ### Проблемы при установке
-Если ваша хостинговая компания не предоставляет FTP доступ, то вам будет необходимо установить этот модуль прежде чем устанавливать данный модуль оплаты.
-
 Другой вариант - это закачать на сервер содержимое папки upload в корень директoрии, где устанвлена OpenCart
