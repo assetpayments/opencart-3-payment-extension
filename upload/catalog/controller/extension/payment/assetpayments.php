@@ -33,6 +33,9 @@ class ControllerExtensionPaymentAssetPayments extends Controller {
 		if ($country == ''){
 			$country = 'UKR';
 		}
+		
+		//****Phone number fix****//
+		$phone = preg_replace('/[^\d]+/', '', $order_info['telephone']);
 
 		$data['action'] = 'https://assetpayments.us/checkout/pay';
 
@@ -44,7 +47,7 @@ class ControllerExtensionPaymentAssetPayments extends Controller {
 	    		'FirstName' => $order_info['payment_firstname']. ' ' . $order_info['payment_lastname'],
             		'LastName' => $order_info['payment_lastname'],
             		'Email' => $order_info['email'],
-            		'Phone' => $order_info['telephone'],           
+            		'Phone' => $phone,           
             		'Address' => $order_info['payment_address_1'] . ' ' . $order_info['payment_address_2'] . ' ' . $order_info['payment_city'].' '.$order_info['payment_country'] . ' ' . $order_info['payment_postcode'],           
             		'CountryISO' => $country, 
 			'Amount' => $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false),
