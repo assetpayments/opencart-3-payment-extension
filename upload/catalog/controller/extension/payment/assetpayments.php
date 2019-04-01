@@ -49,7 +49,7 @@ class ControllerExtensionPaymentAssetPayments extends Controller {
             		'CountryISO' => $country, 
 			'Amount' => $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false),
             		'Currency' => $order_info['currency_code'],
-            		'CustomMerchantInfo' => 'OpenCart: 3',
+            		'CustomMerchantInfo' => 'OpenCart: ' .''. VERSION,
 			'AssetPaymentsKey' => $this->config->get('payment_assetpayments_merchant'),
 			'Products' => $request['Products']
           );
