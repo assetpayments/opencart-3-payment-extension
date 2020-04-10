@@ -56,7 +56,7 @@ class ControllerExtensionPaymentAssetPayments extends Controller {
 			'AssetPaymentsKey' => $this->config->get('payment_assetpayments_merchant'),
 			'Products' => $request['Products']
           );
-		var_dump ($send_data);
+		//var_dump ($send_data);
 		$data['xml'] = base64_encode(json_encode($send_data));
 		return $this->load->view('extension/payment/assetpayments', $data);	  
 		  
