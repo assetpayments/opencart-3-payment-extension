@@ -16,6 +16,12 @@
 ### Notes
 Tested and developed with OpenCart v.3.0.2.0
 
+### Set products language
+Add this before product array
+$this->load->language('product/product');
+$language_id = 2; // Language ID
+$this->config->set('config_language_id', $language_id);
+
 ### Troubleshooting
 Alternatively you can just upload the upload directory content to your opencart installation directory.
 
