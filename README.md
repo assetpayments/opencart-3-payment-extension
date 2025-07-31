@@ -49,6 +49,8 @@ Alternatively you can just upload the upload directory content to your opencart 
 В контроллер catalot/controller/extension/payment/assetpayments.com добавить в public function index()
 
 $results = $this->model_localisation_language->getLanguages();
-print("<pre>".print_r($results,true)."</pre>");
+print($results);
 $this->config->set('config_language_id',3);
 $this->session->data['language'] = 'uk-ua';
+
+
